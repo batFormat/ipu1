@@ -1,0 +1,2 @@
+INSERT INTO `ls` (`idls`, `nlic`, `house`, `address`) VALUES ('123456789', '12345', '10', 'г. Сокол, ул. Советская, дом 10В, кв. 6');
+INSERT INTO `ls` (`idls`, `nlic`, `house`, `address`) VALUES ('123456780', '12346', '16', 'г. Сокол, ул. Советская, дом 10, кв. 8');
