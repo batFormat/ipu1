@@ -13,7 +13,7 @@ if ( isset($data['do_login']) )
             //если пароль совпадает, то нужно авторизовать пользователя
             $_SESSION['logged_user'] = $user;
 
-            echo 'Ваш адрес <br/><a href="ipu.php">Передать показания</a><hr>';
+            echo 'Ваш адрес<br/><a href="ipu.php">Передать показания</a><hr>';
         }else
         {
             $errors[] = 'Неверно введен пароль!';
