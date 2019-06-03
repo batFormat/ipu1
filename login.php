@@ -2,33 +2,28 @@
 require 'db.php';
 
 $data = $_POST;
-if ( isset($data['do_login']) )
-{
-    $user = R::findOne('ls', 'nlic = ?', array($data['nlic'])); //ls таблица в бд
-    if ( $user )
-    {
-        //логин существует
-        if($data['house'] === $user->house) //проверка соостветсвия пароля
-        {
-            //если пароль совпадает, то нужно авторизовать пользователя
-            $_SESSION['logged_user'] = $user;
+if (isset($data['do_login'])) {
+	$user = R::findOne('ls', 'nlic = ?', [$data['nlic']]); //ls таблица в бд
+	if ($user) {
+		//логин существует
+		if ($data['house'] === $user->house) //проверка соостветсвия пароля
+		{
+			//если пароль совпадает, то нужно авторизовать пользователя
+			$_SESSION['logged_user'] = $user;
 
-            echo 'Ваш адрес $<br/><a href="ipu.php">Передать показания</a><hr>';
-        }else
-        {
-            $errors[] = 'Неверно введен пароль!';
-        }
+			echo "Ваш адрес $user->address <br/><a href=\"ipu.php\">Передать показания</a><hr>";
+		} else {
+			$errors[] = 'Неверно введен пароль!';
+		}
 
-    }else
-    {
-        $errors[] = 'Пользователь с таким логином не найден!';
-    }
+	} else {
+		$errors[] = 'Пользователь с таким логином не найден!';
+	}
 
-    if ( ! empty($errors) )
-    {
-        //выводим ошибки авторизации
-        echo '<div idls="errors" style="color:red;">' .array_shift($errors). '</div><hr>';
-    }
+	if (!empty($errors)) {
+		//выводим ошибки авторизации
+		echo '<div idls="errors" style="color:red;">' . array_shift($errors) . '</div><hr>';
+	}
 
 }
 

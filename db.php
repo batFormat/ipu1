@@ -1,6 +1,6 @@
 <?php 
 require 'libs/rb.php';
-R::setup( 'mysql:host=localhost;dbname=ipu','root', '' );
+R::setup( 'mysql:host=localhost;dbname=ls','root', '' );
 
 if ( !R::testconnection() )
 {
